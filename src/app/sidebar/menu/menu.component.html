@@ -1,14 +1,5 @@
 <ul class="grid gap-2">
-  <li>
-    <app-menu-item></app-menu-item>
-  </li>
-  <li>
-    <app-menu-item></app-menu-item>
-  </li>
-  <li>
-    <app-menu-item></app-menu-item>
-  </li>
-  <li>
-    <app-menu-item></app-menu-item>
+  <li *ngFor="let menuItem of menuItems">
+    <app-menu-item [itemIcon]="menuItem.icon" [itemText]="menuItem.text"></app-menu-item>
   </li>
 </ul>
