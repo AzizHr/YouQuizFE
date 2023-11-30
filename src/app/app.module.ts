@@ -7,6 +7,7 @@ import { LogoComponent } from './sidebar/logo/logo.component';
 import { MenuComponent } from './sidebar/menu/menu.component';
 import { MenuItemComponent } from './sidebar/menu/menu-item/menu-item.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchInputComponent } from './searchbar/search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     LogoComponent,
     MenuComponent,
     MenuItemComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    SearchInputComponent
   ],
   imports: [
     BrowserModule
