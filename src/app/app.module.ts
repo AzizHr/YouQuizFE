@@ -8,6 +8,7 @@ import { MenuComponent } from './sidebar/menu/menu.component';
 import { MenuItemComponent } from './sidebar/menu/menu-item/menu-item.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SearchInputComponent } from './searchbar/search-input/search-input.component';
+import { SearchButtonComponent } from './searchbar/search-button/search-button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchInputComponent } from './searchbar/search-input/search-input.comp
     MenuComponent,
     MenuItemComponent,
     SearchbarComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    SearchButtonComponent
   ],
   imports: [
     BrowserModule
