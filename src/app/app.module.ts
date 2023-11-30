@@ -11,6 +11,7 @@ import { SearchInputComponent } from './searchbar/search-input/search-input.comp
 import { SearchButtonComponent } from './searchbar/search-button/search-button.component';
 import { AppRouterModule } from './app-router.module';
 import { SubjectsComponent } from './subjects/subjects.component';
+import { addSubjectComponent } from './subjects/add-subject/add-subject.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SubjectsComponent } from './subjects/subjects.component';
     SearchbarComponent,
     SearchInputComponent,
     SearchButtonComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    addSubjectComponent
   ],
   imports: [
     BrowserModule,
