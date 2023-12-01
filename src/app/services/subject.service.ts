@@ -7,11 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class SubjectService {
 
-  private api: string = 'localhost:8080/api/subjects';
-
   constructor(private http: HttpClient) {}
 
   findAll(): Observable<any> {
-    return this.http.get<any>(this.api);
+    return this.http.get<any>('http://localhost:8080/api/subjects');
   }
 }
