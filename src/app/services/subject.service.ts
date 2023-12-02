@@ -19,7 +19,11 @@ export class SubjectService {
     return this.http.post<any>(this.api, subject)
   }
 
-  delete(task: any): Observable<any> {
-    return this.http.delete<any>(`${this.api}/${task.id}`)
+  delete(subject: any): Observable<any> {
+    return this.http.delete<any>(`${this.api}/${subject.id}`)
+  }
+
+  findById(subject: any): Observable<any> {
+    return this.http.put<any>(`${this.api}/${subject.id}`, subject);
   }
 }
