@@ -15,7 +15,7 @@
                 <td class="py-2 text-gray-500">{{ subject.children.length }}</td>
                 <td class="py-2 text-gray-500 flex gap-4 items-center">
                     <i class="fa-regular fa-pen-to-square text-green-500 bg-green-200 rounded-sm p-2" style="font-size: 20px; cursor: pointer;"></i>
-                    <i class="fa-regular fa-trash-can text-red-500 bg-red-200 rounded-sm p-2" style="font-size: 20px; cursor: pointer;"></i>
+                    <i (click)="deleteSubject(subject)" class="fa-regular fa-trash-can text-red-500 bg-red-200 rounded-sm p-2" style="font-size: 20px; cursor: pointer;"></i>
                 </td>
             </tr>
         </tbody>

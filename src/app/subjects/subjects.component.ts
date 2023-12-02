@@ -22,5 +22,11 @@ export class SubjectsComponent implements OnInit {
             console.log(data);
         });
     }
+
+    deleteSubject(subject: any): void {
+        this.subjectService.delete(subject).subscribe(data => {
+            console.log(data);
+        });
+    }
     
 }

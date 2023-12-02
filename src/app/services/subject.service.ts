@@ -18,4 +18,8 @@ export class SubjectService {
   addSubject(subject: any): Observable<any> {
     return this.http.post<any>(this.api, subject)
   }
+
+  delete(task: any): Observable<any> {
+    return this.http.delete<any>(`${this.api}/${task.id}`)
+  }
 }
