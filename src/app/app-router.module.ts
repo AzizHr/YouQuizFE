@@ -5,10 +5,13 @@ import { addSubjectComponent } from "./subjects/add-subject/add-subject.componen
 import { EditSubjectComponent } from "./subjects/edit-subject/edit-subject.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: "/", pathMatch: 'full' },
+    { path: '', redirectTo: "subjects", pathMatch: 'full' },
     { path: 'subjects', component: SubjectsComponent },
     { path: 'subjects/new', component: addSubjectComponent },
-    { path: 'subjects/:id/edit', component: EditSubjectComponent }
+    { path: 'subjects/edit/:id', component: EditSubjectComponent },
+    { path: 'subjects', component: SubjectsComponent },
+    { path: 'subjects/new', component: addSubjectComponent },
+    { path: 'subjects/edit/:id', component: EditSubjectComponent }
 ]
 
 @NgModule({

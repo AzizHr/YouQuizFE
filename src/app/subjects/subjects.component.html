@@ -1,23 +1,33 @@
 <div class="w-full overflow-x-auto p-2">
-    <table class="w-full">
-        <thead class="text-left border-b border-gray-300">
-            <th class="py-2 pr-3">ID</th>
-            <th class="py-2 pr-3">TITLE</th>
-            <th class="py-2 pr-3">PARENT</th>
-            <th class="py-2 pr-3">CHILDREN</th>
-            <th class="py-2 pr-3">OPERATIONS</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let subject of subjects" class="border-b border-gray-300">
-                <td class="py-2 text-gray-500">{{ subject.id }}</td>
-                <td class="py-2 text-gray-500">{{ subject.title }}</td>
-                <td class="py-2 text-gray-500">{{ subject.parent ? subject.parent.title : 'no-parent' }}</td>
-                <td class="py-2 text-gray-500">{{ subject.children.length }}</td>
-                <td class="py-2 text-gray-500 flex gap-4 items-center">
-                    <i class="fa-regular fa-pen-to-square text-green-500 bg-green-200 rounded-sm p-2" style="font-size: 20px; cursor: pointer;"></i>
-                    <i (click)="deleteSubject(subject)" class="fa-regular fa-trash-can text-red-500 bg-red-200 rounded-sm p-2" style="font-size: 20px; cursor: pointer;"></i>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="w-full">
+    <thead class="text-left border-b border-gray-300">
+      <th class="py-2 pr-3">ID</th>
+      <th class="py-2 pr-3">TITLE</th>
+      <th class="py-2 pr-3">PARENT</th>
+      <th class="py-2 pr-3">CHILDREN</th>
+      <th class="py-2 pr-3">OPERATIONS</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subject of subjects" class="border-b border-gray-300">
+        <td class="py-2 text-gray-500">{{ subject.id }}</td>
+        <td class="py-2 text-gray-500">{{ subject.title }}</td>
+        <td class="py-2 text-gray-500">
+          {{ subject.parent ? subject.parent.title : "no-parent" }}
+        </td>
+        <td class="py-2 text-gray-500">{{ subject.children.length }}</td>
+        <td class="py-2 text-gray-500 flex gap-4 items-center">
+          <i
+            [routerLink]="['/subjects/edit', subject.id]"
+            class="fa-regular fa-pen-to-square text-green-500 bg-green-200 rounded-sm p-2"
+            style="font-size: 20px; cursor: pointer"
+          ></i>
+          <i
+            (click)="confirmDelete(+subject.id)"
+            class="fa-regular fa-trash-can text-red-500 bg-red-200 rounded-sm p-2"
+            style="font-size: 20px; cursor: pointer"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

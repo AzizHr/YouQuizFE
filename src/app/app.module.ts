@@ -14,6 +14,7 @@ import { SearchButtonComponent } from './searchbar/search-button/search-button.c
 import { AppRouterModule } from './app-router.module';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { addSubjectComponent } from './subjects/add-subject/add-subject.component';
+import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { addSubjectComponent } from './subjects/add-subject/add-subject.componen
     SearchInputComponent,
     SearchButtonComponent,
     SubjectsComponent,
-    addSubjectComponent
+    addSubjectComponent,
+    EditSubjectComponent
   ],
   imports: [
     BrowserModule,

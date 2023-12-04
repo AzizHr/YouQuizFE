@@ -1,32 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../services/subject.service';
+import Swal from 'sweetalert2';
 
 @Component({
-    selector: 'app-subjects',
-    templateUrl: './subjects.component.html'
+  selector: 'app-subjects',
+  templateUrl: './subjects.component.html',
 })
-
 export class SubjectsComponent implements OnInit {
+  subjects: any = [];
 
-    subjects: any = [];
+  ngOnInit(): void {
+    this.getSubjects();
+  }
 
-    ngOnInit(): void {
-        this.getSubjects();
-    }
+  constructor(private subjectService: SubjectService) {}
 
-    constructor(private subjectService: SubjectService) {}
+  getSubjects(): void {
+    this.subjectService.findAll().subscribe((data) => {
+      this.subjects = data.subjects;
+      console.log(data);
+    });
+  }
 
-    getSubjects(): void {
-        this.subjectService.findAll().subscribe(data => {
-            this.subjects = data.subjects;
-            console.log(data);
-        });
-    }
+  confirmDelete(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteSubject(id);
+      }
+    });
+  }
 
-    deleteSubject(subject: any): void {
-        this.subjectService.delete(subject).subscribe(data => {
-            console.log(data);
-        });
-    }
-    
+  deleteSubject(id: number): void {
+    this.subjectService.delete(id).subscribe((data) => {
+      console.log(data);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `${data.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      this.getSubjects();
+    });
+  }
 }
