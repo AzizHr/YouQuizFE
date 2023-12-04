@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaService } from '../services/media.service';
 import Swal from 'sweetalert2';
+import { MediaService } from '../services/media/media.service';
 
 @Component({
   selector: 'app-medias',
   templateUrl: './medias.component.html',
 })
 export class MediasComponent implements OnInit {
+  
   medias: any = [];
 
   ngOnInit(): void {
