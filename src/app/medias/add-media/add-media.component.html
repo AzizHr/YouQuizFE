@@ -1,0 +1,13 @@
+<form method="post" (ngSubmit)="addMedia()" class="grid gap-10 md:w-[50%] w-[100%] mx-auto rounded-sm shadow-lg p-4">
+    <div class="grid gap-3">
+        <label for="title" class="text-gray-600">Title</label>
+        <input type="text" name="title" [(ngModel)]="title" placeholder="Subject title" class="px-2 py-3 rounded-sm border border-gray-500">
+    </div>
+    <div class="grid gap-3">
+        <label for="parent" class="text-gray-600">Parent</label>
+        <select name="parentId" [(ngModel)]="parentId" class="px-2 py-3 rounded-sm border border-gray-500 bg-white">
+            <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.title }}</option>
+        </select>
+    </div>
+    <button class="rounded-sm bg-cyan-500 p-3 font-semibold justify-self-start text-gray-50">Submit</button>
+</form>
