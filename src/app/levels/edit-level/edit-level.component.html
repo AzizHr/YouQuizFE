@@ -1,0 +1,15 @@
+<form method="post" (ngSubmit)="editLevel()" class="grid gap-10 md:w-[50%] w-[100%] mx-auto rounded-sm shadow-lg p-4">
+    <div class="grid gap-3">
+        <label for="title" class="text-gray-600">Description</label>
+        <input type="text" name="description" [(ngModel)]="level.description" placeholder="Level description" class="px-2 py-3 rounded-sm border border-gray-500">
+    </div>
+    <div class="grid gap-3">
+        <label for="title" class="text-gray-600">Max points</label>
+        <input type="number" name="maxPoints" [(ngModel)]="level.maxPoints" placeholder="Level max points" class="px-2 py-3 rounded-sm border border-gray-500">
+    </div>
+    <div class="grid gap-3">
+        <label for="title" class="text-gray-600">Description</label>
+        <input type="number" name="minPoints" [(ngModel)]="level.minPoints" placeholder="Level min points" class="px-2 py-3 rounded-sm border border-gray-500">
+    </div>
+    <button class="rounded-sm bg-cyan-500 p-3 font-semibold justify-self-start text-gray-50">Submit</button>
+</form>

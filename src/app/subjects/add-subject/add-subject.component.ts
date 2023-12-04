@@ -6,7 +6,7 @@ import { SubjectService } from 'src/app/services/subject.service';
     templateUrl: './add-subject.component.html'
 })
 
-export class addSubjectComponent implements OnInit {
+export class AddSubjectComponent implements OnInit {
 
     @Output() onAddSubject: EventEmitter<any> = new EventEmitter();
     title: string = '';

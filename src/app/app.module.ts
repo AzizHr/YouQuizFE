@@ -13,8 +13,11 @@ import { SearchInputComponent } from './searchbar/search-input/search-input.comp
 import { SearchButtonComponent } from './searchbar/search-button/search-button.component';
 import { AppRouterModule } from './app-router.module';
 import { SubjectsComponent } from './subjects/subjects.component';
-import { addSubjectComponent } from './subjects/add-subject/add-subject.component';
+import { AddSubjectComponent } from './subjects/add-subject/add-subject.component';
 import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.component';
+import { LevelsComponent } from './levels/levels.component';
+import { AddLevelComponent } from './levels/add-level/add-level.component';
+import { EditLevelComponent } from './levels/edit-level/edit-level.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +30,11 @@ import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.compo
     SearchInputComponent,
     SearchButtonComponent,
     SubjectsComponent,
-    addSubjectComponent,
-    EditSubjectComponent
+    AddSubjectComponent,
+    EditSubjectComponent,
+    LevelsComponent,
+    AddLevelComponent,
+    EditLevelComponent
   ],
   imports: [
     BrowserModule,
