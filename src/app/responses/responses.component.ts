@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../services/response.service';
 import Swal from 'sweetalert2';
+import { ResponseService } from '../services/response/response.service';
 
 @Component({
   selector: 'app-responses',
@@ -33,12 +33,12 @@ export class ResponsesComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteSubject(id);
+        this.deleteResponse(id);
       }
     });
   }
 
-  deleteSubject(id: number): void {
+  deleteResponse(id: number): void {
     this.responseService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({

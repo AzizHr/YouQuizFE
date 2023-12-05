@@ -33,7 +33,12 @@ export class EditSubjectComponent implements OnInit {
   }
 
   editSubject(): void {
-    this.subjectService.update({id: this.subject.id, title: this.subject.title, parentId: this.subject.parent.id}).subscribe(data => console.log(data))
-    this.router.navigate(['/subjects']);
+    if(!this.subjectId) {
+      this.subjectService.update({id: this.subject.id, title: this.subject.title}).subscribe(data => console.log(data))
+      this.router.navigate(['/subjects']);
+    } else {
+      this.subjectService.update({id: this.subject.id, title: this.subject.title, parentId: this.subject.parent.id}).subscribe(data => console.log(data))
+      this.router.navigate(['/subjects']);
+    }
   }
 }

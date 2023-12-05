@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SubjectService } from 'src/app/services/question.service';
+import { Component, OnInit } from '@angular/core';
+import { LevelService } from 'src/app/services/level.service';
+import { QuestionService } from 'src/app/services/question/question.service';
+import { SubjectService } from 'src/app/services/subject.service';
 
 @Component({
     selector: 'app-add-question',
@@ -8,35 +10,56 @@ import { SubjectService } from 'src/app/services/question.service';
 
 export class AddQuestionComponent implements OnInit {
 
-    @Output() onAddSubject: EventEmitter<any> = new EventEmitter();
-    title: string = '';
-    parentId: number = 0;
+    content: string = '';
+    numberOfCorrectResponses: number = 0;
+    numberOfResponses: number = 0;
+    points: number = 0;
+    type: string = '';
+    levelId: number = 0;
+    subjectId: number = 0;
 
-    questions: any = [];
+    levels: any = []
+    subjects: any = []
 
     ngOnInit(): void {
-        this.getQuestions();
+        this.getLevels();
+        this.getSubjects();
     }
 
-    constructor(private questionService: QuestionService) {}
+    constructor(private questionService: QuestionService, private levelService: LevelService, private subjectService: SubjectService) {}
 
-    getQuestions(): void {
-        this.questionService.findAll().subscribe(data => {
-            this.questions = data.questions;
+
+    getLevels(): void {
+        this.levelService.findAll().subscribe((data) => {
+          this.levels = data.levels;
+          console.log(data);
         });
     }
 
-    addSubject() {
+    getSubjects(): void {
+        this.subjectService.findAll().subscribe((data) => {
+          this.subjects = data.subjects;
+          console.log(data);
+        });
+    }
 
-        if(!this.title) {
-            alert('Please provide a title');
+
+    addQuestion() {
+
+        if(!this.content || !this.numberOfCorrectResponses || !this.numberOfResponses || !this.points || !this.type) {
+            alert('All fiels are required');
         }
 
-        const subject = {
-            title: this.title,
-            parentId: this.parentId
+        const question = {
+            content: this.content,
+            numberOfCorrectResponses: this.numberOfCorrectResponses,
+            numberOfResponses: this.numberOfResponses,
+            points: this.points,
+            type: this.type,
+            levelId: this.levelId,
+            subjectId: this.subjectId
         }
 
-        return this.subjectService.addSubject(subject).subscribe(subject => console.log(subject))
+        return this.questionService.addQuestion(question).subscribe(question => console.log(question))
     }
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResponseService } from 'src/app/services/response.service';
+import { ResponseService } from 'src/app/services/response/response.service';
 
 @Component({
-  selector: 'app-edit-subject',
-  templateUrl: './edit-subject.component.html'
+  selector: 'app-edit-response',
+  templateUrl: './edit-response.component.html'
 })
 export class EditResponseComponent implements OnInit {
   responseId: any;
@@ -19,13 +19,13 @@ export class EditResponseComponent implements OnInit {
 
   getResponse(): void {
     this.responseService.findById(this.responseId).subscribe(data => {
-      console.log(data.subject);
+      console.log(data.response);
       this.response = data.response;
     });
   }
 
-  editSubject(): void {
-    this.responseService.update({id: this.subject.id, title: this.subject.title, parentId: this.subject.parent.id}).subscribe(data => console.log(data))
+  editResponse(): void {
+    this.responseService.update(this.response).subscribe(data => console.log(data))
     this.router.navigate(['/responses']);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from 'src/app/services/response.service';
+import { ResponseService } from 'src/app/services/response/response.service';
 
 @Component({
     selector: 'app-add-response',
@@ -8,10 +8,7 @@ import { ResponseService } from 'src/app/services/response.service';
 
 export class AddResponseComponent implements OnInit {
 
-    title: string = '';
-    parentId: number = 0;
-
-    responses: any = [];
+    content: string = '';
 
     ngOnInit(): void {}
 
@@ -20,15 +17,14 @@ export class AddResponseComponent implements OnInit {
 
     addResponse() {
 
-        if(!this.title) {
-            alert('Please provide a title');
+        if(!this.content) {
+            alert('Please provide a content');
         }
 
         const response = {
-            title: this.title,
-            parentId: this.parentId
+            content: this.content
         }
 
-        return this.responseService.addSubject(response).subscribe(response => console.log(subject))
+        return this.responseService.addResponse(response).subscribe(response => console.log(response))
     }
 }

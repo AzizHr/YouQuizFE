@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MediaService } from 'src/app/services/media.service';
+import { MediaService } from 'src/app/services/media/media.service';
+import { QuestionService } from 'src/app/services/question/question.service';
 
 @Component({
   selector: 'app-edit-media',
@@ -13,7 +14,7 @@ export class EditMediaComponent implements OnInit {
   questions: any;
   media: any = {};
 
-  constructor(private route: ActivatedRoute, private mediaService: MediaService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private mediaService: MediaService, private questionService: QuestionService, private router: Router) {}
   
   ngOnInit(): void {
     this.mediaId = this.route.snapshot.paramMap.get('id');
@@ -29,13 +30,13 @@ export class EditMediaComponent implements OnInit {
   }
 
   getQuestions(): void {
-    this.mediaService.findAll().subscribe(data => {
+    this.questionService.findAll().subscribe(data => {
       this.questions = data.questions;
     });
   }
 
-  editSubject(): void {
-    this.mediaService.update({id: this.subject.id, title: this.subject.title, parentId: this.subject.parent.id}).subscribe(data => console.log(data))
+  editMedia(): void {
+    this.mediaService.update({id: this.media.id, type: this.media.type, url: this.media.url, questionId: this.media.questionId}).subscribe(data => console.log(data))
     this.router.navigate(['/medias']);
   }
 }

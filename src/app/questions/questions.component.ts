@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionService } from '../services/question.service';
 import Swal from 'sweetalert2';
+import { QuestionService } from '../services/question/question.service';
 
 @Component({
   selector: 'app-questions',
@@ -33,12 +33,12 @@ export class QuestionsComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteSubject(id);
+        this.deleteQuestion(id);
       }
     });
   }
 
-  deleteSubject(id: number): void {
+  deleteQuestion(id: number): void {
     this.questionsService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({

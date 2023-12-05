@@ -1,41 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaService } from 'src/app/services/media.service';
+import { MediaService } from 'src/app/services/media/media.service';
 
 @Component({
-    selector: 'app-add-media',
-    templateUrl: './add-media.component.html'
+  selector: 'app-add-media',
+  templateUrl: './add-media.component.html',
 })
-
 export class AddMediaComponent implements OnInit {
+  type: string = '';
+  url: string = '';
+  questionId: number = 0;
 
-    title: string = '';
-    questionId: number = 0;
+  questions: any = [];
 
-    questions: any = [];
+  ngOnInit(): void {
+    this.getQuestions();
+  }
 
-    ngOnInit(): void {
-        this.getQuestions();
+  constructor(private mediaService: MediaService) {}
+
+  getQuestions(): void {
+    this.mediaService.findAll().subscribe((data) => {
+      this.questions = data.questions;
+    });
+  }
+
+  addMedia() {
+    if (!this.type || !this.url) {
+      alert('All fields are required');
     }
 
-    constructor(private mediaService: MediaService) {}
+    const media = {
+      type: this.type,
+      url: this.url,
+      questionId: this.questionId,
+    };
 
-    getQuestions(): void {
-        this.mediaService.findAll().subscribe(data => {
-            this.questions = data.questions;
-        });
-    }
-
-    addMedia() {
-
-        if(!this.title) {
-            alert('Please provide a title');
-        }
-
-        const media = {
-            title: this.title,
-            questionId: this.questionId
-        }
-
-        return this.mediaService.addMedia(media).subscribe(media => console.log(media))
-    }
+    return this.mediaService
+      .addMedia(media)
+      .subscribe((media) => console.log(media));
+  }
 }
