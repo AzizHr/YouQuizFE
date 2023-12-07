@@ -27,6 +27,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AddSubjectComponent } from './components/subjects/add-subject/add-subject.component';
 import { EditSubjectComponent } from './components/subjects/edit-subject/edit-subject.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import {ValidationsComponent} from "./components/validations/validations.component";
+import {AddValidationComponent} from "./components/validations/add-validation/add-validation.component";
+import {EditValidationComponent} from "./components/validations/edit-validation/edit-validation.component";
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
     MediasComponent,
     AddMediaComponent,
     EditMediaComponent,
+    ValidationsComponent,
+    AddValidationComponent,
+    EditValidationComponent
   ],
   imports: [BrowserModule, AppRouterModule, HttpClientModule, FormsModule],
   providers: [],
