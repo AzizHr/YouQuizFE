@@ -1,12 +1,18 @@
-<form method="post" (ngSubmit)="addSubject()" class="grid gap-10 md:w-[50%] w-[100%] mx-auto rounded-sm shadow-lg p-4">
+<form method="post" (ngSubmit)="addValidation()" class="grid gap-10 md:w-[50%] w-[100%] mx-auto rounded-sm shadow-lg p-4">
     <div class="grid gap-3">
-        <label for="title" class="text-gray-600">Title</label>
-        <input type="text" name="title" [(ngModel)]="title" placeholder="Subject title" class="px-2 py-3 rounded-sm border border-gray-500">
+        <label for="points" class="text-gray-600">Points</label>
+        <input type="number" id="points" name="points" [(ngModel)]="points" placeholder="Points for this response" class="px-2 py-3 rounded-sm border border-gray-500" min="0">
     </div>
     <div class="grid gap-3">
-        <label for="parent" class="text-gray-600">Parent</label>
-        <select name="parentId" [(ngModel)]="parentId" class="px-2 py-3 rounded-sm border border-gray-500 bg-white">
-            <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.title }}</option>
+        <label for="question" class="text-gray-600">Question</label>
+        <select name="questionId" id="question" [(ngModel)]="questionId" class="px-2 py-3 rounded-sm border border-gray-500 bg-white">
+            <option *ngFor="let question of questions" [value]="question.id">{{ question.content }}</option>
+        </select>
+    </div>
+    <div class="grid gap-3">
+        <label for="response" class="text-gray-600">Response</label>
+        <select name="questionId" id="response" [(ngModel)]="responseId" class="px-2 py-3 rounded-sm border border-gray-500 bg-white">
+            <option *ngFor="let response of responses" [value]="response.id">{{ response.content }}</option>
         </select>
     </div>
     <button class="rounded-sm bg-cyan-500 p-3 font-semibold justify-self-start text-gray-50">Submit</button>

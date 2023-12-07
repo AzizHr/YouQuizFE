@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import {SubjectService} from "../../services/subject.service";
+import {SubjectResponse} from "../../models/SubjectResponse";
 
 @Component({
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
 })
 export class SubjectsComponent implements OnInit {
-  subjects: any;
+  subjects: SubjectResponse[] = [];
 
   ngOnInit(): void {
     this.getSubjects();

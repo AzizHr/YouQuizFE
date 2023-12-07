@@ -15,6 +15,9 @@ import {EditResponseComponent} from "./components/responses/edit-response/edit-r
 import {MediasComponent} from "./components/medias/medias.component";
 import {AddMediaComponent} from "./components/medias/add-media/add-media.component";
 import {EditMediaComponent} from "./components/medias/edit-media/edit-media.component";
+import {ValidationsComponent} from "./components/validations/validations.component";
+import {AddValidationComponent} from "./components/validations/add-validation/add-validation.component";
+import {EditValidationComponent} from "./components/validations/edit-validation/edit-validation.component";
 
 const routes: Routes = [
     { path: '', redirectTo: "subjects", pathMatch: 'full' },
@@ -32,7 +35,10 @@ const routes: Routes = [
     { path: 'responses/edit/:id', component: EditResponseComponent },
     { path: 'medias', component: MediasComponent },
     { path: 'medias/new', component: AddMediaComponent },
-    { path: 'medias/edit/:id', component: EditMediaComponent }
+    { path: 'medias/edit/:id', component: EditMediaComponent },
+    { path: 'validations', component: ValidationsComponent },
+    { path: 'validations/new', component: AddValidationComponent },
+    { path: 'validations/edit/:id', component: EditValidationComponent }
 ]
 
 @NgModule({

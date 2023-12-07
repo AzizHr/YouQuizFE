@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SubjectService } from 'src/app/services/subject.service';
+import { Component, OnInit } from '@angular/core';
+import {ValidationService} from "../../../services/validation/validation.service";
+import {QuestionService} from "../../../services/question/question.service";
+import {ResponseService} from "../../../services/response/response.service";
 
 @Component({
     selector: 'app-add-subject',
@@ -8,35 +10,40 @@ import { SubjectService } from 'src/app/services/subject.service';
 
 export class AddValidationComponent implements OnInit {
 
-    @Output() onAddSubject: EventEmitter<any> = new EventEmitter();
-    title: string = '';
-    parentId: number = 0;
+    points: number = 0;
+    questionId: number = 0;
+    responseId: number = 0;
 
-    subjects: any = [];
+    questions: any;
+    responses: any;
 
     ngOnInit(): void {
-        this.getSubjects();
+        this.getQuestions();
+        this.getResponses();
     }
 
-    constructor(private subjectService: SubjectService) {}
+    constructor(private validationService: ValidationService, private questionService: QuestionService, private responseService: ResponseService) {}
 
-    getSubjects(): void {
-        this.subjectService.findAll().subscribe(data => {
-            this.subjects = data.subjects;
+    getQuestions(): void {
+        this.questionService.findAll().subscribe(data => {
+            this.questions = data.questions;
         });
     }
 
-    addSubject() {
+    getResponses(): void {
+        this.responseService.findAll().subscribe(data => {
+            this.responses = data.responses;
+        });
+    }
 
-        if(!this.title) {
-            alert('Please provide a title');
+    addValidation() {
+
+        const validation = {
+            points: this.points,
+            questionId: this.questionId,
+            responseId: this.responseId
         }
 
-        const subject = {
-            title: this.title,
-            parentId: this.parentId
-        }
-
-        return this.subjectService.addSubject(subject).subscribe(subject => console.log(subject))
+        return this.validationService.addValidation(validation).subscribe(validation => console.log(validation))
     }
 }
