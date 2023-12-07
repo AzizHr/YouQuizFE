@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { SubjectService } from '../services/subject.service';
+import { LevelService } from 'src/app/services/level.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-subjects',
-  templateUrl: './subjects.component.html',
+  selector: 'app-levels',
+  templateUrl: './levels.component.html',
 })
-export class SubjectsComponent implements OnInit {
-  subjects: any = [];
+export class LevelsComponent implements OnInit {
+  levels: any = [];
 
   ngOnInit(): void {
-    this.getSubjects();
+    this.getLevels();
   }
 
-  constructor(private subjectService: SubjectService) {}
+  constructor(private levelService: LevelService) {}
 
-  getSubjects(): void {
-    this.subjectService.findAll().subscribe((data) => {
-      this.subjects = data.subjects;
+  getLevels(): void {
+    this.levelService.findAll().subscribe((data) => {
+      this.levels = data.levels;
       console.log(data);
     });
   }
@@ -39,7 +39,7 @@ export class SubjectsComponent implements OnInit {
   }
 
   deleteSubject(id: number): void {
-    this.subjectService.delete(id).subscribe((data) => {
+    this.levelService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({
         position: 'top-end',
@@ -48,7 +48,7 @@ export class SubjectsComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.getSubjects();
+      this.getLevels();
     });
   }
 }

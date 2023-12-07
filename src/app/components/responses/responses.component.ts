@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseService } from 'src/app/services/response/response.service';
 import Swal from 'sweetalert2';
-import { QuestionService } from '../services/question/question.service';
 
 @Component({
-  selector: 'app-questions',
-  templateUrl: './questions.component.html',
+  selector: 'app-responses',
+  templateUrl: './responses.component.html',
 })
-export class QuestionsComponent implements OnInit {
-  questions: any = [];
+export class ResponsesComponent implements OnInit {
+  responses: any = [];
 
   ngOnInit(): void {
-    this.getQuestions();
+    this.getResponses();
   }
 
-  constructor(private questionsService: QuestionService) {}
+  constructor(private responseService: ResponseService) {}
 
-  getQuestions(): void {
-    this.questionsService.findAll().subscribe((data) => {
-      this.questions = data.questions;
+  getResponses(): void {
+    this.responseService.findAll().subscribe((data) => {
+      this.responses = data.responses;
       console.log(data);
     });
   }
@@ -33,13 +33,13 @@ export class QuestionsComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteQuestion(id);
+        this.deleteResponse(id);
       }
     });
   }
 
-  deleteQuestion(id: number): void {
-    this.questionsService.delete(id).subscribe((data) => {
+  deleteResponse(id: number): void {
+    this.responseService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({
         position: 'top-end',
@@ -48,7 +48,7 @@ export class QuestionsComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.getQuestions();
+      this.getResponses();
     });
   }
 }

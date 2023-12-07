@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { LevelService } from '../services/level.service';
+import { QuestionService } from 'src/app/services/question/question.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-levels',
-  templateUrl: './levels.component.html',
+  selector: 'app-questions',
+  templateUrl: './questions.component.html',
 })
-export class LevelsComponent implements OnInit {
-  levels: any = [];
+export class QuestionsComponent implements OnInit {
+  questions: any = [];
 
   ngOnInit(): void {
-    this.getLevels();
+    this.getQuestions();
   }
 
-  constructor(private levelService: LevelService) {}
+  constructor(private questionsService: QuestionService) {}
 
-  getLevels(): void {
-    this.levelService.findAll().subscribe((data) => {
-      this.levels = data.levels;
+  getQuestions(): void {
+    this.questionsService.findAll().subscribe((data) => {
+      this.questions = data.questions;
       console.log(data);
     });
   }
@@ -33,13 +33,13 @@ export class LevelsComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteSubject(id);
+        this.deleteQuestion(id);
       }
     });
   }
 
-  deleteSubject(id: number): void {
-    this.levelService.delete(id).subscribe((data) => {
+  deleteQuestion(id: number): void {
+    this.questionsService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({
         position: 'top-end',
@@ -48,7 +48,7 @@ export class LevelsComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.getLevels();
+      this.getQuestions();
     });
   }
 }

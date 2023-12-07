@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { MediaService } from '../services/media/media.service';
+import {SubjectService} from "../../services/subject.service";
 
 @Component({
-  selector: 'app-medias',
-  templateUrl: './medias.component.html',
+  selector: 'app-subjects',
+  templateUrl: './subjects.component.html',
 })
-export class MediasComponent implements OnInit {
-  
-  medias: any = [];
+export class SubjectsComponent implements OnInit {
+  subjects: any;
 
   ngOnInit(): void {
-    this.getMedias();
+    this.getSubjects();
   }
 
-  constructor(private mediaService: MediaService) {}
+  constructor(private subjectService: SubjectService) {}
 
-  getMedias(): void {
-    this.mediaService.findAll().subscribe((data) => {
-      this.medias = data.medias;
+  getSubjects(): void {
+    this.subjectService.findAll().subscribe((data) => {
+      this.subjects = data.subjects;
       console.log(data);
     });
   }
@@ -34,13 +33,13 @@ export class MediasComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteMedia(id);
+        this.deleteSubject(id);
       }
     });
   }
 
-  deleteMedia(id: number): void {
-    this.mediaService.delete(id).subscribe((data) => {
+  deleteSubject(id: number): void {
+    this.subjectService.delete(id).subscribe((data) => {
       console.log(data);
       Swal.fire({
         position: 'top-end',
@@ -49,7 +48,7 @@ export class MediasComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.getMedias();
+      this.getSubjects();
     });
   }
 }

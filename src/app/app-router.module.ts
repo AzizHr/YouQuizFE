@@ -1,20 +1,20 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { SubjectsComponent } from "./subjects/subjects.component";
-import { AddSubjectComponent } from "./subjects/add-subject/add-subject.component";
-import { EditSubjectComponent } from "./subjects/edit-subject/edit-subject.component";
-import { LevelsComponent } from "./levels/levels.component";
-import { AddLevelComponent } from "./levels/add-level/add-level.component";
-import { EditLevelComponent } from "./levels/edit-level/edit-level.component";
-import { QuestionsComponent } from "./questions/questions.component";
-import { AddQuestionComponent } from "./questions/add-question/add-question.component";
-import { EditQuestionComponent } from "./questions/edit-question/edit-question.component";
-import { ResponsesComponent } from "./responses/responses.component";
-import { AddResponseComponent } from "./responses/add-response/add-response.component";
-import { EditResponseComponent } from "./responses/edit-response/edit-response.component";
-import { MediasComponent } from "./medias/medias.component";
-import { AddMediaComponent } from "./medias/add-media/add-media.component";
-import { EditMediaComponent } from "./medias/edit-media/edit-media.component";
+import {SubjectsComponent} from "./components/subjects/subjects.component";
+import {AddSubjectComponent} from "./components/subjects/add-subject/add-subject.component";
+import {EditSubjectComponent} from "./components/subjects/edit-subject/edit-subject.component";
+import {LevelsComponent} from "./components/levels/levels.component";
+import {AddLevelComponent} from "./components/levels/add-level/add-level.component";
+import {EditLevelComponent} from "./components/levels/edit-level/edit-level.component";
+import {QuestionsComponent} from "./components/questions/questions.component";
+import {AddQuestionComponent} from "./components/questions/add-question/add-question.component";
+import {EditQuestionComponent} from "./components/questions/edit-question/edit-question.component";
+import {ResponsesComponent} from "./components/responses/responses.component";
+import {AddResponseComponent} from "./components/responses/add-response/add-response.component";
+import {EditResponseComponent} from "./components/responses/edit-response/edit-response.component";
+import {MediasComponent} from "./components/medias/medias.component";
+import {AddMediaComponent} from "./components/medias/add-media/add-media.component";
+import {EditMediaComponent} from "./components/medias/edit-media/edit-media.component";
 
 const routes: Routes = [
     { path: '', redirectTo: "subjects", pathMatch: 'full' },
