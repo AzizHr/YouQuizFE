@@ -18,4 +18,14 @@ export class MenuComponent {
     new MenuItem('Validations', 'fa-regular fa-sun'),
   ];
 
+  routeLinks: string[] = [
+    '/',
+    '/subjects',
+    '/levels',
+    '/questions',
+    '/medias',
+    '/responses',
+    '/validations'
+  ];
+
 }
